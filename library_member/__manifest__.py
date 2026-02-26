@@ -1,0 +1,14 @@
+{
+    "name": "Library Members",
+    "version": "1.0",
+    "license": "AGPL-3",
+    "depends": ["library_app", "mail"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/book_view.xml",
+        "views/member_view.xml",
+        "views/library_menu.xml",
+    ],
+    "installable": True,
+    "application": False,
+}
