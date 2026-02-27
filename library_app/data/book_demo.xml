@@ -8,11 +8,22 @@
     <field name="name">Brave New World</field>
     <field name="author_ids"
            eval="[(4, ref('res_partner_huxley'))]" />
-    <!-- <field name="date_published">1932-01-01</field> -->
-    <field name="date_published"
-       eval="(datetime.now() + timedelta(-1))" />
+    <field name="date_published">1932-01-01</field>
+    
+    <!-- Using python to set values -->
+    <!-- <field name="date_published"
+       eval="(datetime.now() + timedelta(-1))" /> -->    
+    
+    <!-- <field name="publisher_id" eval="ref('res_partner_packt')" /> -->
+    
+    <field name="publisher_id" ref="res_partner_packt" />
 
-    <field name="publisher_id" eval="ref('res_partner_packt')" />
+    <!-- Setting multiple values for one to many fields -->
+    <field name="author_ids"
+       eval="[(6, 0, 
+              [ref('res_partner_alexandre'), ref('res_partner_holger')]
+              )]"
+    />
 
  </record>
 </odoo>
