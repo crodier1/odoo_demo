@@ -5,25 +5,32 @@
     <field name="name">Aldous Huxley</field> 
   </record> 
   <record model="library.book" id="library_book_bnw">
-    <field name="name">Brave New World</field>
-    <field name="author_ids"
-           eval="[(4, ref('res_partner_huxley'))]" />
-    <field name="date_published">1932-01-01</field>
-    
-    <!-- Using python to set values -->
-    <!-- <field name="date_published"
-       eval="(datetime.now() + timedelta(-1))" /> -->    
-    
-    <!-- <field name="publisher_id" eval="ref('res_partner_packt')" /> -->
-    
-    <field name="publisher_id" ref="res_partner_packt" />
+        <field name="name">Brave New World</field>
+        <field name="author_ids"
+            eval="[(4, ref('res_partner_huxley'))]" />
+        <field name="date_published">1932-01-01</field>
+        
+        <!-- Using python to set values -->
+        <!-- <field name="date_published"
+        eval="(datetime.now() + timedelta(-1))" /> -->    
+        
+        <!-- <field name="publisher_id" eval="ref('res_partner_packt')" /> -->
+        
+        <field name="publisher_id" ref="res_partner_packt" /> 
 
-    <!-- Setting multiple values for one to many fields -->
-    <field name="author_ids"
-       eval="[(6, 0, 
-              [ref('res_partner_alexandre'), ref('res_partner_holger')]
-              )]"
-    />
+        <!-- Setting multiple values for one to many fields -->
+        <field name="author_ids"
+            eval="[(6, 0, 
+                    [ref('res_partner_alexandre'), ref('res_partner_holger')]
+                    )]"
+        />      
 
- </record>
+    </record>
+
+    <!-- Delete data in the XML -->
+    <delete model="res.partner" search="[('id','=',ref('library_app.res_partner_daniel'))]"/>
+
+    <!-- <delete model="res.partner" id="library_app.res_partner_daniel" /> -->
+    
+
 </odoo>
