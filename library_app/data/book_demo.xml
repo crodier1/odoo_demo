@@ -28,7 +28,7 @@
     </record>
 
     <!-- Delete data in the XML -->
-    <delete model="res.partner" search="[('id','=',ref('library_app.res_partner_daniel'))]"/>
+    <!-- <delete model="res.partner" search="[('id','=',ref('library_app.res_partner_daniel'))]"/> -->
 
     <!-- <delete model="res.partner" id="library_app.res_partner_daniel" /> -->
     
