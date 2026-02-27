@@ -1,5 +1,6 @@
 from odoo import fields, models
 from odoo.exceptions import ValidationError
+from dateutil.relativedelta import relativedelta
 
 class Book(models.Model):
     _name = "library.book"
@@ -29,6 +30,7 @@ class Book(models.Model):
     date_published = fields.Date()
     last_borrow_date = fields.Datetime(
         "Last Borrowed On",
+        # default value is the current date and time to today
          default=lambda self: fields.Datetime.now()) 
 
     # Other fields:
