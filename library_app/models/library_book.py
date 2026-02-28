@@ -36,14 +36,22 @@ class Book(models.Model):
     active = fields.Boolean("Active?", default=True)
     image = fields.Binary("Cover")
 
+    # Computed fields:
     publisher_country_id = fields.Many2one(
-        "res.country", string="Publisher Country",
+        "res.country", 
+        string="Publisher Country",
         compute="_compute_publisher_country",
         inverse="_inverse_publisher_country",
         search="_search_publisher_country",
+    ) 
+
+    # Related fields:
+    publisher_state_id = fields.Many2one(
+        "res.country.state",
+        string="Publisher State",
+        related="publisher_id.state_id",
     )
-    
-    # Relational Fields
+
     publisher_id = fields.Many2one("res.partner", string="Publisher")
     author_ids = fields.Many2many("res.partner", string="Authors")
 
