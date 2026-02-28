@@ -1,6 +1,5 @@
 from odoo import fields, models
 from odoo.exceptions import ValidationError
-from dateutil.relativedelta import relativedelta
 
 class Book(models.Model):
     _name = "library.book"
