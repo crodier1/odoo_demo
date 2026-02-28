@@ -4,6 +4,14 @@
         <field name="name">Book Form</field>
         <field name="model">library.book</field>
         <field name="arch" type="xml">
+        <search>
+            <field name="publisher_country_id"/>
+            
+            <group expand="0" string="Group By">
+                <filter string="Publisher Country" name="group_by_country" 
+                        context="{'group_by': 'publisher_country_id'}"/>
+            </group>
+        </search>
             <form>
                 <header>
                     <button name="button_check_isbn" type="object" string="Check ISBN"/>
