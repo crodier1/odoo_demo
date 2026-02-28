@@ -55,6 +55,17 @@ class Book(models.Model):
     publisher_id = fields.Many2one("res.partner", string="Publisher")
     author_ids = fields.Many2many("res.partner", string="Authors")
 
+    # SQL constraints:
+    _sql_constraints = [
+        ("library_book_name_date_uq",
+         "UNIQUE (name, date_published)",
+        "Title and publication date must be unique."),
+        ("library_book_check_date",
+         "CHECK (date_published <= current_date)",
+         "Publication date must not be in the future."),
+    ]
+    
+
     @api.depends("publisher_id.country_id")
     def _compute_publisher_country(self):
         for book in self:
