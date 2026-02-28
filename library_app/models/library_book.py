@@ -55,7 +55,7 @@ class Book(models.Model):
     publisher_id = fields.Many2one("res.partner", string="Publisher")
     author_ids = fields.Many2many("res.partner", string="Authors")
 
-    # SQL constraints:
+    # SQL model constraints:
     _sql_constraints = [
         ("library_book_name_date_uq",
          "UNIQUE (name, date_published)",
@@ -97,3 +97,10 @@ class Book(models.Model):
                     raise ValidationError("%s ISBN is invalid" % 
                     book.isbn) 
         return True 
+
+    # Pyton Model constraints:
+    @api.constrains("isbn")
+    def _constrain_isbn_valid(self):
+        for book in self:
+            if book.isbn and not book._check_isbn():
+                raise ValidationError("%s is an invalid ISBN" % book.isbn)
